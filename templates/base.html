@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}وبلاگ جنگو گرلز{% endblock %}</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        .page-header {
+            background-color: #8c52ff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 10px solid #5a19cc;
+            position: relative;
+        }
+        .page-header h1 a {
+            color: white;
+            text-decoration: none;
+        }
+        .add-post-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ff9400;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+        .add-post-link:hover {
+            background-color: #e68500;
+        }
+        .content {
+            width: 80%;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .post {
+            background-color: white;
+            padding: 20px 30px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+      <header class="page-header">
+          {% block top_right_action %}
+              {% if user.is_staff %}
+                  <a href="{% url 'post_new' %}" class="add-post-link">+</a>
+              {% endif %}
+          {% endblock %}
+          <h1><a href="{% url 'post_list' %}">جنگو گرلز</a></h1>
+      </header>
+
+    <main class="content">
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
